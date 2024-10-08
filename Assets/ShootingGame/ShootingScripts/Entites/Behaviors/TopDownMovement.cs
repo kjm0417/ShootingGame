@@ -6,6 +6,7 @@ public class TopDownMovement : MonoBehaviour
     //실제 이동이 일어날 컴포넌트
     private TopDownController controller;
     private Rigidbody2D movementRb;
+    private CharacterStatsHandler characterStatsHandler;
 
     private Vector2 movementDirection = Vector2.zero;
 
@@ -15,6 +16,7 @@ public class TopDownMovement : MonoBehaviour
 
         movementRb = GetComponent<Rigidbody2D>(); 
         controller = GetComponent<TopDownController>();
+        characterStatsHandler = GetComponent<CharacterStatsHandler>();
     }
 
     private void Start()
@@ -37,8 +39,9 @@ public class TopDownMovement : MonoBehaviour
 
     private void ApplyMovement(Vector2 direction) 
     {
-        direction = direction * 5;
+        direction = direction * characterStatsHandler.CurrentStat.speed; 
         movementRb.velocity = direction;
     }
 }
+
 
