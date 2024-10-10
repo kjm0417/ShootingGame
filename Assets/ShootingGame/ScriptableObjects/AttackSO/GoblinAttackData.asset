@@ -10,21 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: PlayerDefaultAttackSO
-  m_EditorClassIdentifier: Assembly-CSharp::RangedAttackS0
+  m_Name: GoblinAttackData
+  m_EditorClassIdentifier: Assembly-CSharp::AttackS0
   size: 1
   delay: 0.15
-  power: 2
-  speed: 10
+  power: 1
+  speed: 5
   target:
     serializedVersion: 2
-    m_Bits: 64
-  isOnKnockBack: 1
-  knockbackPower: 5
-  knockbackTime: 0.1
-  bulletnameTag: Arrow
-  duration: 5
-  spread: 4
-  numberOfProjectilesPerShot: 1
-  multipleProjectilesAngle: 7
-  projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    m_Bits: 256
+  isOnKnockBack: 0
+  knockbackPower: 0
+  knockbackTime: 0

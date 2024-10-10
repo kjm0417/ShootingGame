@@ -1,21 +1,21 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//°øÅëÀûÀÎ ³»¿ëÀ» ¿©±â¿¡¼­ ³Ö¾îµÎ°í 
+//ê³µí†µì ì¸ ë‚´ìš©ì„ ì—¬ê¸°ì—ì„œ ë„£ì–´ë‘ê³  
 public class TopDownController : MonoBehaviour
 {
-    public event Action<Vector2> OnMoveEvent; //ActionÀº ¹«Á¶°Ç void¸¸ ¹İÈ¯ÇØ¾ß ¾Æ´Ï¸é Func
+    public event Action<Vector2> OnMoveEvent; //Actionì€ ë¬´ì¡°ê±´ voidë§Œ ë°˜í™˜í•´ì•¼ ì•„ë‹ˆë©´ Func
     public event Action<Vector2> OnLookEvent;
     public event Action<AttackS0> OnAttackEvent;
 
-    protected bool isAttacking {  get;  set; } //»ó¼Ó¹Ş´Â °÷¿¡¼­¸¸ ¼öÁ¤ °¡´É
+    protected bool isAttacking { get; set; } //ìƒì†ë°›ëŠ” ê³³ì—ì„œë§Œ ìˆ˜ì • ê°€ëŠ¥
 
     private float timeSinceLastAttack = float.MaxValue;
 
-    //protected ÇÁ·Î ÆÛÆ¼¸¦ ÇÑ ÀÌÀ¯ : ³ª¸¸ ¹Ù²Ù°í ½ÍÁö¸¸ °¡Á®°¡´Â°Ç ³» »ó¼Ó¹Ş´Â Å¬·¡½ºµéµµ º¼ ¼ö ÀÖ°Ô!
-    protected CharacterStatsHandler stats { get;private set; } //TopDownController¸¦ »ó¼ÓÇÏ°í ÀÖ´Â ¾Öµé¸¸ statsÇÊµå¸¦ ÀÚÀ¯·Ó°Ô »ç¿ëÇÒ ¼ö ÀÖ°Ô ¸¸µé¾î¶ó
+    //protected í”„ë¡œ í¼í‹°ë¥¼ í•œ ì´ìœ  : ë‚˜ë§Œ ë°”ê¾¸ê³  ì‹¶ì§€ë§Œ ê°€ì ¸ê°€ëŠ”ê±´ ë‚´ ìƒì†ë°›ëŠ” í´ë˜ìŠ¤ë“¤ë„ ë³¼ ìˆ˜ ìˆê²Œ!
+    protected CharacterStatsHandler stats { get; private set; } //TopDownControllerë¥¼ ìƒì†í•˜ê³  ìˆëŠ” ì• ë“¤ë§Œ statsí•„ë“œë¥¼ ììœ ë¡­ê²Œ ì‚¬ìš©í•  ìˆ˜ ìˆê²Œ ë§Œë“¤ì–´ë¼
 
     protected virtual void Awake()
     {
@@ -29,12 +29,12 @@ public class TopDownController : MonoBehaviour
 
     private void HandleAttackDelay()
     {
-        if(timeSinceLastAttack <stats.CurrentStat.attackS0.delay)
+        if (timeSinceLastAttack < stats.CurrentStat.attackS0.delay)
         {
             timeSinceLastAttack += Time.deltaTime;
         }
-        else if(isAttacking && timeSinceLastAttack>= stats.CurrentStat.attackS0.delay)
-        { 
+        else if (isAttacking && timeSinceLastAttack >= stats.CurrentStat.attackS0.delay)
+        {
             timeSinceLastAttack = 0f;
             CallAttackEvent(stats.CurrentStat.attackS0);
         }
@@ -43,12 +43,12 @@ public class TopDownController : MonoBehaviour
 
     public void CallMoveEvent(Vector2 direction)
     {
-        OnMoveEvent?.Invoke(direction); //?. ¾øÀ¸¸é ¸»°í ÀÖÀ¸¸é ½ÇÇà
+        OnMoveEvent?.Invoke(direction); //?. ì—†ìœ¼ë©´ ë§ê³  ìˆìœ¼ë©´ ì‹¤í–‰
     }
 
     public void CallLookEvent(Vector2 direction)
     {
-        OnLookEvent?.Invoke(direction); //?. ¾øÀ¸¸é ¸»°í ÀÖÀ¸¸é ½ÇÇà
+        OnLookEvent?.Invoke(direction); //?. ì—†ìœ¼ë©´ ë§ê³  ìˆìœ¼ë©´ ì‹¤í–‰
     }
 
     private void CallAttackEvent(AttackS0 attackS0)

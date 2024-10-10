@@ -6,11 +6,11 @@ using UnityEngine;
 public class Goal : MonoBehaviour
 {
     public bool isPlayer1Goal;
-    private GameManager gameManager;
+    private GameManager1 gameManager;
 
     private void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager1>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
