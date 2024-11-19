@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Transform Player {  get; private set; }
 
     public ObjectPool pool { get; private set; }
+    public ParticleSystem EffectParticle;
 
     private void Awake()
     {
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag(PlayerTag).transform;
 
         pool = GameObject.FindObjectOfType<ObjectPool>();
+
+        EffectParticle = GameObject.FindGameObjectWithTag("Particle").GetComponent<ParticleSystem>();
     }
     // Start is called before the first frame update
     void Start()

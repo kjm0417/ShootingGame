@@ -30,6 +30,7 @@ public class TopDownShooting : MonoBehaviour
         aimDirection = direction;
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private void OnShoot(AttackS0 attackS0)
     {
         RangedAttackS0 rangedAttackS0 = attackS0 as RangedAttackS0;
